@@ -1,0 +1,46 @@
+{
+  "audit_journal": {
+    "packageName": "Audit Journal",
+    "packageId": "audit_journal",
+    "views": [
+      {
+        "viewId": "view1",
+        "viewName": "Journal Entries"
+      },
+      {
+        "viewId": "view2",
+        "viewName": "Compact Journal Entries"
+      },
+      {
+        "viewId": "view3",
+        "viewName": "Journal Changes"
+      },
+      {
+        "viewId": "view4",
+        "viewName": "Journal Changes"
+      },
+      {
+        "viewId": "view5",
+        "viewName": "Multi-referenced Invoices"
+      },
+      {
+        "viewId": "view6",
+        "viewName": "Gaps in Journal Entries Numbering"
+      }
+    ]
+  },
+  "other_package": {
+    "packageName": "Test data packageName",
+    "packageId": "test_pack1",
+    "views": [
+      {
+        "viewId": "view1",
+        "viewName": "Test View 1"
+      },
+      {
+        "viewId": "view2",
+        "viewName": "Test View 2 "
+      }
+    ]
+  }
+}

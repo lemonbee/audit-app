@@ -1,0 +1,70 @@
+{
+  "d": {
+    "__count": "3",
+    "results": [
+      {
+        "__metadata": {
+          "id": "https://wdciw04.wdf.sap.corp:1301/sap/opu/odata/sap/FAC_AUDIT_JOURNAL_SRV/CompactJournalSet('.22~001.33~EUR._RFIS_RLDNR%20%3D%20''0L''%20AND%20FIS_GJAHR%20%3D%20''2017''%20AND%20FIS_BUKRS%20%3D%20''1010''')",
+          "uri": "https://wdciw04.wdf.sap.corp:1301/sap/opu/odata/sap/FAC_AUDIT_JOURNAL_SRV/CompactJournalSet('.22~001.33~EUR._RFIS_RLDNR%20%3D%20''0L''%20AND%20FIS_GJAHR%20%3D%20''2017''%20AND%20FIS_BUKRS%20%3D%20''1010''')",
+          "type": "FAC_AUDIT_JOURNAL_SRV.CompactJournal"
+        },
+        "FiscalPeriod": "001",
+        "CompanyCodeCurrency": "EUR",
+        "DebitAmountInCoCodeCrcy": "16909301.04",
+        "CreditAmountInCoCodeCrcy": "-16909301.04",
+        "GLDebitAmountInCoCodeCrcy": "16909301.04",
+        "AssetDebitAmtInCoCodeCrcy": "0.00",
+        "MaterialDebitAmtInCoCodeCrcy": "0.00",
+        "DebtorDebitAmtInCoCodeCrcy": "0.00",
+        "CreditorDebitAmtInCoCodeCrcy": "0.00",
+        "GLCreditAmountInCoCodeCrcy": "-16909301.04",
+        "AssetCreditAmtInCoCodeCrcy": "0.00",
+        "MaterialCreditAmtInCoCodeCrcy": "0.00",
+        "DebtorCreditAmtInCoCodeCrcy": "0.00",
+        "CreditorCreditAmtInCoCodeCrcy": "0.00"
+      },
+      {
+        "__metadata": {
+          "id": "https://wdciw04.wdf.sap.corp:1301/sap/opu/odata/sap/FAC_AUDIT_JOURNAL_SRV/CompactJournalSet('.22~002.33~EUR._RFIS_RLDNR%20%3D%20''0L''%20AND%20FIS_GJAHR%20%3D%20''2017''%20AND%20FIS_BUKRS%20%3D%20''1010''')",
+          "uri": "https://wdciw04.wdf.sap.corp:1301/sap/opu/odata/sap/FAC_AUDIT_JOURNAL_SRV/CompactJournalSet('.22~002.33~EUR._RFIS_RLDNR%20%3D%20''0L''%20AND%20FIS_GJAHR%20%3D%20''2017''%20AND%20FIS_BUKRS%20%3D%20''1010''')",
+          "type": "FAC_AUDIT_JOURNAL_SRV.CompactJournal"
+        },
+        "FiscalPeriod": "002",
+        "CompanyCodeCurrency": "EUR",
+        "DebitAmountInCoCodeCrcy": "71348191.95",
+        "CreditAmountInCoCodeCrcy": "-71348191.95",
+        "GLDebitAmountInCoCodeCrcy": "71348191.95",
+        "AssetDebitAmtInCoCodeCrcy": "0.00",
+        "MaterialDebitAmtInCoCodeCrcy": "0.00",
+        "DebtorDebitAmtInCoCodeCrcy": "0.00",
+        "CreditorDebitAmtInCoCodeCrcy": "0.00",
+        "GLCreditAmountInCoCodeCrcy": "-71348191.95",
+        "AssetCreditAmtInCoCodeCrcy": "0.00",
+        "MaterialCreditAmtInCoCodeCrcy": "0.00",
+        "DebtorCreditAmtInCoCodeCrcy": "0.00",
+        "CreditorCreditAmtInCoCodeCrcy": "0.00"
+      },
+      {
+        "__metadata": {
+          "id": "https://wdciw04.wdf.sap.corp:1301/sap/opu/odata/sap/FAC_AUDIT_JOURNAL_SRV/CompactJournalSet('.22~010.33~EUR._RFIS_RLDNR%20%3D%20''0L''%20AND%20FIS_GJAHR%20%3D%20''2017''%20AND%20FIS_BUKRS%20%3D%20''1010''')",
+          "uri": "https://wdciw04.wdf.sap.corp:1301/sap/opu/odata/sap/FAC_AUDIT_JOURNAL_SRV/CompactJournalSet('.22~010.33~EUR._RFIS_RLDNR%20%3D%20''0L''%20AND%20FIS_GJAHR%20%3D%20''2017''%20AND%20FIS_BUKRS%20%3D%20''1010''')",
+          "type": "FAC_AUDIT_JOURNAL_SRV.CompactJournal"
+        },
+        "FiscalPeriod": "010",
+        "CompanyCodeCurrency": "EUR",
+        "DebitAmountInCoCodeCrcy": "13.28",
+        "CreditAmountInCoCodeCrcy": "-13.28",
+        "GLDebitAmountInCoCodeCrcy": "13.28",
+        "AssetDebitAmtInCoCodeCrcy": "0.00",
+        "MaterialDebitAmtInCoCodeCrcy": "0.00",
+        "DebtorDebitAmtInCoCodeCrcy": "0.00",
+        "CreditorDebitAmtInCoCodeCrcy": "0.00",
+        "GLCreditAmountInCoCodeCrcy": "-13.28",
+        "AssetCreditAmtInCoCodeCrcy": "0.00",
+        "MaterialCreditAmtInCoCodeCrcy": "0.00",
+        "DebtorCreditAmtInCoCodeCrcy": "0.00",
+        "CreditorCreditAmtInCoCodeCrcy": "0.00"
+      }
+    ]
+  }
+}

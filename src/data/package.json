@@ -1,0 +1,100 @@
+{
+  "injmech": [
+    {
+      "injmechid": 1,
+      "injmechdescrip": "Allergic reaction"
+    },
+    {
+      "injmechid": 2,
+      "injmechdescrip": "Bloodborne"
+    },
+    {
+      "injmechid": 3,
+      "injmechdescrip": "Bugbite"
+    },
+    {
+      "injmechid": 4,
+      "injmechdescrip": "Chemical"
+    },
+    {
+      "injmechid": 5,
+      "injmechdescrip": "Electrical"
+    },
+    {
+      "injmechid": 6,
+      "injmechdescrip": "Employee encounter"
+    },
+    {
+      "injmechid": 7,
+      "injmechdescrip": "Fall"
+    },
+    {
+      "injmechid": 8,
+      "injmechdescrip": "Fire"
+    },
+    {
+      "injmechid": 9,
+      "injmechdescrip": "Fumes"
+    }
+  ],
+  "injobject": [
+    {
+      "injobjid": 1,
+      "injobjdescrip": "Bed"
+    },
+    {
+      "injobjid": 2,
+      "injobjdescrip": "Cart"
+    },
+    {
+      "injobjid": 3,
+      "injobjdescrip": "Door"
+    },
+    {
+      "injobjid": 4,
+      "injobjdescrip": "Hoyer lift"
+    },
+    {
+      "injobjid": 5,
+      "injobjdescrip": "Maxi lift"
+    },
+    {
+      "injobjid": 10,
+      "injobjdescrip": "Other"
+    },
+    {
+      "injobjid": 6,
+      "injobjdescrip": "Sara lift"
+    },
+    {
+      "injobjid": 7,
+      "injobjdescrip": "Shower"
+    },
+    {
+      "injobjid": 8,
+      "injobjdescrip": "Table"
+    },
+    {
+      "injobjid": 9,
+      "injobjdescrip": "Wheelchair"
+    }
+  ],
+  "injother": [
+    {
+      "injotherid": 1,
+      "injotherdescrip": "Patient care or tasks assigned to job"
+    },
+    {
+      "injotherid": 2,
+      "injotherdescrip": "Patient encounter"
+    },
+    {
+      "injotherid": 3,
+      "injotherdescrip": "Reoccurrence"
+    },
+    {
+      "injotherid": 4,
+      "injotherdescrip": "Unspecified-unknown"
+    }
+  ]
+}
