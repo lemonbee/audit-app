@@ -15,7 +15,22 @@ const store = createStore(reducers)
 
 const PageRouter = () => (
   <Provider store={ store }>
-    <AuditToolBar/>
+    <Router>
+      <div>
+        <PageNavBar />
+        <hr/>
+        <Route
+               exact
+               path="/create_job"
+               component={ DataPackages } />
+        <Route
+               path="/app"
+               component={ History } />
+        <Route
+               path="/runs"
+               component={ ExtractRuns } />
+      </div>
+    </Router>
   </Provider>
 )
 

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Jumbotron, Button, Navbar, NavItem, MenuItem, Nav, NavDropdown } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
 class PageNavBar extends Component {
 
