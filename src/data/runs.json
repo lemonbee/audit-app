@@ -1,1 +1,71 @@
-{ "_embedded": { "extractionJobList": [{ "id": 4, "percentage": 1.0, "status": "COMPLETED", "reportName": "yourOtherValue", "viewName": "yourValue", "downloadLink": "4.csv", "_links": { "self": { "href": "http://localhost:3000/Audit/api/v1.0/job/4" } } }, { "id": 2, "percentage": 1.0, "status": "COMPLETED", "reportName": "", "viewName": "", "downloadLink": "2.csv", "_links": { "self": { "href": "http://localhost:3000/Audit/api/v1.0/job/2" } } }, { "id": 3, "percentage": 1.0, "status": "COMPLETED", "reportName": "yourOtherValue", "viewName": "yourValue", "downloadLink": "3.csv", "_links": { "self": { "href": "http://localhost:3000/Audit/api/v1.0/job/3" } } }, { "id": 1, "percentage": 1.0, "status": "COMPLETED", "reportName": "", "viewName": "", "downloadLink": "1.csv", "_links": { "self": { "href": "http://localhost:3000/Audit/api/v1.0/job/1" } } }] }, "_links": { "self": { "href": "http://localhost:3000/Audit/api/v1.0/job" } } }
+{
+  "_embedded": {
+    "extractionJobList": [
+      {
+        "id": 7,
+        "createdAt": 1493707831626,
+        "percentage": 0,
+        "status": "STARTED",
+        "lastUpdatedAt": 1493707831626,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/7"
+          }
+        }
+      },
+      {
+        "id": 8,
+        "createdAt": 1493707871231,
+        "percentage": 0,
+        "status": "STARTED",
+        "lastUpdatedAt": 1493707871231,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/8"
+          }
+        }
+      },
+      {
+        "id": 9,
+        "createdAt": 1493708069189,
+        "percentage": 0,
+        "status": "STARTED",
+        "lastUpdatedAt": 1493708069189,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/9"
+          }
+        }
+      },
+      {
+        "id": 10,
+        "createdAt": 1493708135487,
+        "percentage": 0,
+        "status": "STARTED",
+        "lastUpdatedAt": 1493708135487,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/10"
+          }
+        }
+      },
+      {
+        "id": 11,
+        "createdAt": 1493708277865,
+        "percentage": 0,
+        "status": "STARTED",
+        "lastUpdatedAt": 1493708277865,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/11"
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "http://localhost:8099/Audit/api/v1.0/Jobs"
+    }
+  }
+}

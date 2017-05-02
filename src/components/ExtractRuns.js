@@ -56,7 +56,7 @@ class ExtractRuns extends Component {
     };
   }
   loadData() {
-    fetch(`/Audit/api/v1.0/job`)
+    fetch(`/Audit/api/v1.0/Jobs`)
       .then(function(response) {
         if (response.status !== 200) {
           console.log('Looks like there was a problem. Status Code: ' +
@@ -76,8 +76,12 @@ class ExtractRuns extends Component {
     );
   }
   componentWillMount() {
-    console.log("test");
-    fetch("/Audit/api/v1.0/job")
+    // var data = require('json!../data/runs.json');
+    // this.setState({
+    //   tableData: data._embedded.extractionJobList
+    // });
+    // console.log("test");
+    fetch("/Audit/api/v1.0/Jobs")
       .then((response) => {
         return response.json()
       })
@@ -86,7 +90,7 @@ class ExtractRuns extends Component {
           tableData: json._embedded.extractionJobList
         });
       });
-  // this.loadData();
+    this.loadData();
   }
 
   render() {
@@ -156,7 +160,9 @@ class ExtractRuns extends Component {
                     { row.percentage }
                   </TableRowColumn>
                   <TableRowColumn>
-                    { row.downloadLink }
+                    <a href={ 'http://localhost:8099/Audit/' + row.downloadLink }>
+                      { row.downloadLink }
+                    </a>
                   </TableRowColumn>
                 </TableRow>
               )) }
