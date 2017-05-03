@@ -5,38 +5,9 @@ import TextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-const tableData = [
-  {
-    name: 'John Smith',
-    status: 'Employed',
-    selected: true,
-  },
-  {
-    name: 'Randal White',
-    status: 'Unemployed',
-  },
-  {
-    name: 'Stephanie Sanders',
-    status: 'Employed',
-    selected: true,
-  },
-  {
-    name: 'Steve Brown',
-    status: 'Employed',
-  },
-  {
-    name: 'Joyce Whitten',
-    status: 'Employed',
-  },
-  {
-    name: 'Samuel Roberts',
-    status: 'Employed',
-  },
-  {
-    name: 'Adam Moore',
-    status: 'Employed',
-  },
-];
+import { getCompletedRuns } from '../actions/extractRunActions';
+import { connect } from "react-redux"
+var data = require('../data/packages.json');
 
 class ExtractRuns extends Component {
   constructor(props) {
@@ -55,26 +26,6 @@ class ExtractRuns extends Component {
       tableData: []
     };
   }
-  loadData() {
-    fetch(`/Audit/api/v1.0/Jobs`)
-      .then(function(response) {
-        if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' +
-            response.status);
-          return;
-        }
-
-        // Examine the text in the response  
-        response.json().then(function(data) {
-          console.log(data);
-          this.setState({
-            tableData: data._embedded.extractionJobList
-          });
-        // this.state.tableData = data._embedded.extractionJobList;
-        }.bind(this));
-      }
-    );
-  }
   componentWillMount() {
     // var data = require('json!../data/runs.json');
     // this.setState({
@@ -90,7 +41,7 @@ class ExtractRuns extends Component {
           tableData: json._embedded.extractionJobList
         });
       });
-    this.loadData();
+
   }
 
   render() {
@@ -121,8 +72,8 @@ class ExtractRuns extends Component {
               <TableHeaderColumn tooltip="The Run ID">
                 Run ID
               </TableHeaderColumn>
-              <TableHeaderColumn tooltip="View Name">
-                View Name
+              <TableHeaderColumn tooltip="Report Name">
+                Report Name
               </TableHeaderColumn>
               <TableHeaderColumn tooltip="Run Status">
                 Run Status
@@ -173,4 +124,10 @@ class ExtractRuns extends Component {
     )
   }
 }
-export default ExtractRuns;
+
+function select(state) {
+  return {
+    visibilityFilter: state.visibilityFilter
+  }
+}
+export default connect(select)(ExtractRuns);

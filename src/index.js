@@ -7,7 +7,8 @@ import DataPackages from './components/DataPackages';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
-import reducers from './reducers/packageReducers'
+import reducers from './reducers/runreducers'
+
 import 'bootstrap/dist/css/bootstrap.css';
 import AuditToolBar from './components/AuditToolBar';
 const store = createStore(reducers)
