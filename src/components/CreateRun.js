@@ -21,6 +21,11 @@ const colorTypes = [
   'yellow'
 ];
 
+const viewsSelectable = [
+  'Journals',
+  'Gaps'
+
+];
 function handleClick() {
   fetch('/Audit/api/v1.0/job/AuditJournal/CostCenterVHSet/5', {
     method: 'POST',
@@ -36,7 +41,7 @@ function handleClick() {
 }
 
 
-class DataPackages extends Component {
+class CreateRun extends Component {
   constructor(props) {
     super(props);
   // this.handleClick = this.handleClick.bind(this);
@@ -125,5 +130,5 @@ function select(state) {
   }
 }
 
-export default connect(select)(DataPackages)
+export default connect(select)(CreateRun)
 

@@ -16,8 +16,8 @@
       {
         "id": 8,
         "createdAt": 1493707871231,
-        "percentage": 0,
-        "status": "STARTED",
+        "percentage": 1,
+        "status": "COMPLETED",
         "lastUpdatedAt": 1493707871231,
         "_links": {
           "self": {

@@ -6,6 +6,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import { getCompletedRuns } from '../actions/extractRunActions';
+import { VisibilityFilters } from '../actions/extractRunActions';
+
 import { connect } from "react-redux"
 var data = require('../data/packages.json');
 
@@ -32,15 +34,15 @@ class ExtractRuns extends Component {
     //   tableData: data._embedded.extractionJobList
     // });
     // console.log("test");
-    fetch("/Audit/api/v1.0/Jobs")
-      .then((response) => {
-        return response.json()
-      })
-      .then((json) => {
-        this.setState({
-          tableData: json._embedded.extractionJobList
-        });
-      });
+    // fetch("/Audit/api/v1.0/Jobs")
+    //   .then((response) => {
+    //     return response.json()
+    //   })
+    //   .then((json) => {
+    //     this.setState({
+    //       tableData: json._embedded.extractionJobList
+    //     });
+    //   });
 
   }
 
@@ -91,7 +93,7 @@ class ExtractRuns extends Component {
                      deselectOnClickaway={ this.state.deselectOnClickaway }
                      showRowHover={ this.state.showRowHover }
                      stripedRows={ this.state.stripedRows }>
-            { this.state.tableData.map((row, index) => (
+            { this.props.visibleRuns.map((row, index) => (
                 <TableRow
                           key={ index }
                           selected={ row.selected }>
@@ -124,10 +126,20 @@ class ExtractRuns extends Component {
     )
   }
 }
+function selectVisibleRuns(runs, filter) {
+  switch (filter) {
+    case VisibilityFilters.SHOW_ALL:
+      return runs.runs
+    case VisibilityFilters.SHOW_COMPLETED:
+      return runs.runs.filter(runs => runs.status == filter)
+    case VisibilityFilters.SHOW_STARTED:
+      return runs.runs.filter(runs => runs.status == filter)
+  }
+}
 
 function select(state) {
   return {
-    visibilityFilter: state.visibilityFilter
+    visibleRuns: selectVisibleRuns(state.runs, state.statusFilter)
   }
 }
 export default connect(select)(ExtractRuns);

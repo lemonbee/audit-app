@@ -11,10 +11,15 @@ import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-
 import { Link } from 'react-router-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import { connect } from "react-redux"
+import { setVisibilityFilter } from '../actions/extractRunActions'
+import { browserHistory } from 'react-router'
+import { routerMiddleware, push } from 'react-router-redux'
 
-export default class AuditToolBar extends React.Component {
+class AuditToolBar extends React.Component {
 
   constructor(props) {
+    injectTapEventPlugin();
     super(props);
     this.state = {
       value: 3,
@@ -22,32 +27,31 @@ export default class AuditToolBar extends React.Component {
   }
 
   handleChange(event, index, value) {
-    this.setState({
-      value
-    })
+    // this.props.updateFilter(index)
+    this.props.dispatch(setVisibilityFilter(index))
   }
   ;
 
   render() {
-    injectTapEventPlugin();
+
     return (
       <MuiThemeProvider>
         <Toolbar>
           <ToolbarGroup firstChild={ true }>
             <IconMenu
                       value={ this.state.value }
-                      onChange={ this.handleChange }
+                      onChange={ this.handleChange.bind(this) }
                       iconButtonElement={ <IconButton>
                                             <MoreVertIcon />
                                           </IconButton> }
                       anchorOrigin={ { horizontal: 'left', vertical: 'top' } }
                       targetOrigin={ { horizontal: 'left', vertical: 'top' } }>
               <MenuItem
-                        value={ 1 }
+                        value={ "COMPLETED" }
                         primaryText="Completed Runs" />
               <MenuItem
-                        value={ 2 }
-                        primaryText="Downloaded Runs" />
+                        value={ "STARTED" }
+                        primaryText="Started Runs" />
               <MenuItem
                         value={ 3 }
                         primaryText="All Extraction Runs" />
@@ -62,7 +66,8 @@ export default class AuditToolBar extends React.Component {
             <ToolbarSeparator />
             <RaisedButton
                           label="Create Extraction Run"
-                          primary={ true } />
+                          primary={ true }
+                          onClick={ () => this.props.dispatch(push('/create')) } />
             <IconMenu iconButtonElement={ <IconButton>
                                             <NavigationExpandMoreIcon />
                                           </IconButton> }>
@@ -75,3 +80,11 @@ export default class AuditToolBar extends React.Component {
     );
   }
 }
+function select(state) {
+  return {
+    statusFilter: state.statusFilter,
+    browserHistory: state.routing
+  }
+}
+
+export default connect(select)(AuditToolBar)
