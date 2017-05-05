@@ -5,6 +5,7 @@ import AuditToolBar from './components/AuditToolBar';
 import ExtractRuns from './components/ExtractRuns';
 import DataPackages from './components/DataPackages';
 import CreateRun from './components/CreateRun';
+import JobDetail from './components/JobDetail';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -59,8 +60,8 @@ const PageRouter = React.createClass({
                            path="/create"
                            component={ CreateRun } />
                     <Route
-                           path="/test"
-                           component={ DataPackages } />
+                           path="/job/:id"
+                           component={ JobDetail } />
                   </div>
                 </Router>
               </div>

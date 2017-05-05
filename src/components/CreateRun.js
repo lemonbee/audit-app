@@ -1,134 +1,107 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import { Col, Button } from 'react-bootstrap';
-import { connect } from "react-redux"
-import { getPackagesList, getViewsList, selectPackage } from '../actions/packageActions'
+import React from 'react';
+import { Step, Stepper, StepLabel, } from 'material-ui/Stepper';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-'use strict'
+class CreateRun extends React.Component {
+  state = {
+    finished: false,
+    stepIndex: 0,
+  };
 
-var data_packages = [{
-  package: 'Audit Journal',
-  view: 'Views'
-}];
-const cellEditProp = {
-  mode: 'dbclick',
-  blurToSave: true
-};
-const colorTypes = [
-  'red',
-  'blue',
-  'yellow'
-];
+  handleNext = () => {
+    const {stepIndex} = this.state;
+    this.setState({
+      stepIndex: stepIndex + 1,
+      finished: stepIndex >= 2,
+    });
+  };
 
-const viewsSelectable = [
-  'Journals',
-  'Gaps'
-
-];
-function handleClick() {
-  fetch('/Audit/api/v1.0/job/AuditJournal/CostCenterVHSet/5', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      viewName: 'yourValue',
-      reportName: 'yourOtherValue',
-    })
-  })
-}
-
-
-class CreateRun extends Component {
-  constructor(props) {
-    super(props);
-  // this.handleClick = this.handleClick.bind(this);
-  }
-
-
-  componentWillMount() {
-    this.props.dispatch(getPackagesList())
-  }
-  componentDidMount() {
-    fetch(`/Audit/api/v1.0/job`)
-      .then(function(response) {
-        if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' +
-            response.status);
-          return;
-        }
-
-        // Examine the text in the response  
-        response.json().then(function(data) {
-          console.log(data);
-        });
-      }
-
-    );
-  }
-
-  render() {
-    var that = this;
-    const onRowSelect = function(row, isSelected, e) {
-      that.props.dispatch(selectPackage(row.packageId))
+  handlePrev = () => {
+    const {stepIndex} = this.state;
+    if (stepIndex > 0) {
+      this.setState({
+        stepIndex: stepIndex - 1
+      });
     }
-    const selectRow = {
-      mode: 'radio',
-      bgColor: 'rgb(204, 229, 255)',
-      onSelect: onRowSelect
+  };
+
+  getStepContent(stepIndex) {
+    switch (stepIndex) {
+      case 0:
+        return 'Select campaign settings...';
+      case 1:
+        return 'What is an ad group anyways?';
+      case 2:
+        return 'This is the bit I really care about!';
+      default:
+        return 'You\'re a long way from home sonny jim!';
+    }
+  }
+  render() {
+    const {finished, stepIndex} = this.state;
+    const contentStyle = {
+      margin: '0 16px'
     };
 
     return (
-
-      <Col
-           sm={ 10 }
-           xsOffset={ 1 }>
-      <BootstrapTable
-                      data={ this.props.packages }
-                      selectRow={ selectRow }
-                      cellEdit={ cellEditProp }>
-        <TableHeaderColumn
-                           dataField='packageId'
-                           isKey>
-          Data Package ID
-        </TableHeaderColumn>
-        <TableHeaderColumn dataField='packageName'>
-          Data Package Name
-        </TableHeaderColumn>
-      </BootstrapTable>
-      <BootstrapTable
-                      data={ this.props.packageSelected.views }
-                      selectRow={ selectRow }
-                      cellEdit={ cellEditProp }
-                      insertRow
-                      deleteRow
-                      exportCSV>
-        <TableHeaderColumn
-                           dataField='viewId'
-                           isKey>
-          View ID
-        </TableHeaderColumn>
-        <TableHeaderColumn dataField='viewName'>
-          View Name
-        </TableHeaderColumn>
-      </BootstrapTable>
-      <Button
-              bsStyle="primary"
-              onClick={ handleClick }>
-        Create Job
-      </Button>
-      </Col>
+      <MuiThemeProvider>
+        <div style={ { width: '80%', margin: 'auto' } }>
+          <Stepper activeStep={ stepIndex }>
+            <Step>
+              <StepLabel>
+                Select data package and report
+              </StepLabel>
+            </Step>
+            <Step>
+              <StepLabel>
+                Set selection parameters
+              </StepLabel>
+            </Step>
+            <Step>
+              <StepLabel>
+                Create an extract run
+              </StepLabel>
+            </Step>
+          </Stepper>
+          <div style={ contentStyle }>
+            { finished ? (
+              <p>
+                <a
+                   href="#"
+                   onClick={ (event) => {
+                               event.preventDefault();
+                               this.setState({
+                                 stepIndex: 0,
+                                 finished: false
+                               });
+                             } }>Click here</a> to reset the example.
+              </p>
+              ) : (
+              <div>
+                <p>
+                  { this.getStepContent(stepIndex) }
+                </p>
+                <div style={ { marginTop: 12 } }>
+                  <FlatButton
+                              label="Back"
+                              disabled={ stepIndex === 0 }
+                              onTouchTap={ this.handlePrev }
+                              style={ { marginRight: 12 } } />
+                  <RaisedButton
+                                label={ stepIndex === 2 ? 'Finish' : 'Next' }
+                                primary={ true }
+                                onTouchTap={ this.handleNext } />
+                </div>
+              </div>
+              ) }
+          </div>
+        </div>
+      </MuiThemeProvider>
     );
   }
-}
-function select(state) {
-  return {
-    packages: state.packages,
-    packageSelected: state.packageSelected,
-  }
-}
 
-export default connect(select)(CreateRun)
 
+}
+export default CreateRun;

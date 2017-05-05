@@ -7,7 +7,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import { getCompletedRuns } from '../actions/extractRunActions';
 import { VisibilityFilters } from '../actions/extractRunActions';
-
+import { push } from 'react-router-redux'
 import { connect } from "react-redux"
 var data = require('../data/packages.json');
 
@@ -45,6 +45,11 @@ class ExtractRuns extends Component {
     //   });
 
   }
+  onRowSelected(index) {
+    console.log("test")
+    var sId = this.props.visibleRuns[index].id;
+    this.props.dispatch(push('/job/' + sId))
+  }
 
   render() {
     return (
@@ -54,6 +59,7 @@ class ExtractRuns extends Component {
                fixedHeader={ this.state.fixedHeader }
                fixedFooter={ this.state.fixedFooter }
                selectable={ this.state.selectable }
+               onRowSelection={ this.onRowSelected.bind(this) }
                multiSelectable={ this.state.multiSelectable }>
           <TableHeader
                        displaySelectAll={ this.state.showCheckboxes }

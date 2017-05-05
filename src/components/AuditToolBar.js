@@ -14,7 +14,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { connect } from "react-redux"
 import { setVisibilityFilter } from '../actions/extractRunActions'
 import { browserHistory } from 'react-router'
-import { routerMiddleware, push } from 'react-router-redux'
+import { push } from 'react-router-redux'
 
 class AuditToolBar extends React.Component {
 
