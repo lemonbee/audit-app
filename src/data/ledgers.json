@@ -1,0 +1,23 @@
+{
+  "_embedded": {
+    "ledgerList": [
+      {
+        "id": 1,
+        "ledger": "0L",
+        "name": "Leading Ledger"
+      },
+            {
+        "id": 2,
+        "ledger": "1L",
+        "name": "Another Ledger"
+      }
+      
+
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "http://localhost:8099/Audit/api/v1.0/DataProviders"
+    }
+  }
+}

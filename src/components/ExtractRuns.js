@@ -9,7 +9,7 @@ import { getCompletedRuns } from '../actions/extractRunActions';
 import { VisibilityFilters } from '../actions/extractRunActions';
 import { push } from 'react-router-redux'
 import { connect } from "react-redux"
-var data = require('../data/packages.json');
+var dataProviders = require('../data/DataProviders.json');
 
 class ExtractRuns extends Component {
   constructor(props) {

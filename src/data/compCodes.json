@@ -1,0 +1,23 @@
+{
+  "_embedded": {
+    "compCodeList": [
+      {
+        "id": 1,
+        "compCode": "0001",
+        "name": "SAP"
+      },
+            {
+        "id": 2,
+        "compCode": "F001",
+        "name": "Apple"
+      }
+      
+
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "http://localhost:8099/Audit/api/v1.0/DataProviders"
+    }
+  }
+}

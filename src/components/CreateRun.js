@@ -3,42 +3,47 @@ import { Step, Stepper, StepLabel, } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
+var dataProviders = require('../data/DataProviders.json');
+var compCodes = require('../data/compCodes.json')
+var ledgers = require('../data/ledgers.json')
+const styles = {
+  customWidth: {
+    width: '500px',
+  },
+};
+const buttonStyle = {
+  margin: '2% 0 0 40%'
+
+};
 
 class CreateRun extends React.Component {
   state = {
-    finished: false,
-    stepIndex: 0,
-  };
+    selectedReport: 1,
+    reports: [],
+    selectedCoCd: 1,
+    coCds: [],
+    selectedLedger: 1,
+    ledgers: []
 
-  handleNext = () => {
-    const {stepIndex} = this.state;
-    this.setState({
-      stepIndex: stepIndex + 1,
-      finished: stepIndex >= 2,
-    });
   };
-
-  handlePrev = () => {
-    const {stepIndex} = this.state;
-    if (stepIndex > 0) {
-      this.setState({
-        stepIndex: stepIndex - 1
-      });
-    }
-  };
-
-  getStepContent(stepIndex) {
-    switch (stepIndex) {
-      case 0:
-        return 'Select campaign settings...';
-      case 1:
-        return 'What is an ad group anyways?';
-      case 2:
-        return 'This is the bit I really care about!';
-      default:
-        return 'You\'re a long way from home sonny jim!';
-    }
+  handleReportChange = (event, index, value) => this.setState({
+    selectedReport: value
+  });
+  handleCoCdChange = (event, index, value) => this.setState({
+    selectedCoCd: value
+  });
+  handleLedgerChange = (event, index, value) => this.setState({
+    selectedLedger: value
+  });
+  componentWillMount() {
+    this.state.reports = dataProviders._embedded.dataProviderList;
+    this.state.coCds = compCodes._embedded.compCodeList;
+    this.state.ledgers = ledgers._embedded.ledgerList;
   }
+
   render() {
     const {finished, stepIndex} = this.state;
     const contentStyle = {
@@ -48,55 +53,37 @@ class CreateRun extends React.Component {
     return (
       <MuiThemeProvider>
         <div style={ { width: '80%', margin: 'auto' } }>
-          <Stepper activeStep={ stepIndex }>
-            <Step>
-              <StepLabel>
-                Select data package and report
-              </StepLabel>
-            </Step>
-            <Step>
-              <StepLabel>
-                Set selection parameters
-              </StepLabel>
-            </Step>
-            <Step>
-              <StepLabel>
-                Create an extract run
-              </StepLabel>
-            </Step>
-          </Stepper>
-          <div style={ contentStyle }>
-            { finished ? (
-              <p>
-                <a
-                   href="#"
-                   onClick={ (event) => {
-                               event.preventDefault();
-                               this.setState({
-                                 stepIndex: 0,
-                                 finished: false
-                               });
-                             } }>Click here</a> to reset the example.
-              </p>
-              ) : (
-              <div>
-                <p>
-                  { this.getStepContent(stepIndex) }
-                </p>
-                <div style={ { marginTop: 12 } }>
-                  <FlatButton
-                              label="Back"
-                              disabled={ stepIndex === 0 }
-                              onTouchTap={ this.handlePrev }
-                              style={ { marginRight: 12 } } />
-                  <RaisedButton
-                                label={ stepIndex === 2 ? 'Finish' : 'Next' }
-                                primary={ true }
-                                onTouchTap={ this.handleNext } />
-                </div>
-              </div>
-              ) }
-          </div>
+          <SelectField
+                       floatingLabelText="Select Report"
+                       value={ this.state.selectedReport }
+                       onChange={ this.handleReportChange }
+                       style={ { margin: '30' } }>
+            { this.state.reports.map((row, index) => (            <MenuItem
+                                                                            value={ row.entitySetName }
+                                                                            primaryText={ row.name } />)) }
+          </SelectField>
+          <SelectField
+                       floatingLabelText="Select Company Code"
+                       value={ this.state.selectedCoCd }
+                       onChange={ this.handleCoCdChange }
+                       style={ { margin: '30' } }>
+            { this.state.coCds.map((row, index) => (            <MenuItem
+                                                                          value={ row.compCode }
+                                                                          primaryText={ row.name } />)) }
+          </SelectField>
+          <SelectField
+                       floatingLabelText="Select Ledger"
+                       value={ this.state.selectedLedger }
+                       onChange={ this.handleLedgerChange }
+                       style={ { margin: '30' } }>
+            { this.state.ledgers.map((row, index) => (            <MenuItem
+                                                                            value={ row.ledger }
+                                                                            primaryText={ row.name } />)) }
+          </SelectField>
+          <br/>
+          <RaisedButton
+                        label="Start Extraction Run"
+                        style={ buttonStyle } />
         </div>
       </MuiThemeProvider>
     );
