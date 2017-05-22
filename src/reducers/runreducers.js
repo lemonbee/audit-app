@@ -7,7 +7,14 @@ const {SHOW_ALL} = VisibilityFilters
 export function extractRunReducer(state = {}, action) {
   switch (action.type) {
     case "GET_ALL":
-
+      return Object.assign({}, state, {
+        "runs": action.payload._embedded.extractionJobList,
+      })
+    case "FETCH_ALL_SUCCESS":
+      return Object.assign({}, state, {
+        "runs": action.payload._embedded.extractionJobList,
+      })
+    case "GET_ALL_RUNS":
       return Object.assign({}, state, {
         "runs": action.payload._embedded.extractionJobList,
       })

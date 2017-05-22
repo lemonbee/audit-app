@@ -41,6 +41,23 @@ module.exports = {
         loader: "url-loader?limit=10000&mimetype=application/font-woff"
       },
       {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: ['./node_modules', './node_modules/grommet/node_modules']
+            }
+          }
+        ]
+      },
+      {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "file-loader"
       }

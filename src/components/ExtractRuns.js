@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import TextField from 'material-ui/TextField';
@@ -8,9 +8,19 @@ import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import { getCompletedRuns } from '../actions/extractRunActions';
 import { VisibilityFilters } from '../actions/extractRunActions';
 import { push } from 'react-router-redux'
+import { getAllRuns, fetchPostsSuccess, fetchRunsTest } from '../actions/extractRunActions'
 import { connect } from "react-redux"
-var dataProviders = require('../data/DataProviders.json');
+// var dataProviders = require('../data/DataProviders.json');
+var data = require('../data/runs.json');
+const style = {
+  // height: "300",
+  width: "80%",
+  margin: "auto",
+  "margin-top": 10,
+  // textAlign: 'center',
 
+// display: 'inline-block',
+};
 class ExtractRuns extends Component {
   constructor(props) {
     super(props);
@@ -24,11 +34,13 @@ class ExtractRuns extends Component {
       enableSelectAll: false,
       deselectOnClickaway: true,
       showCheckboxes: true,
-      height: '300px',
+      height: '60%',
       tableData: []
     };
+
   }
-  componentWillMount() {
+
+  componentDidMount() {
     // var data = require('json!../data/runs.json');
     // this.setState({
     //   tableData: data._embedded.extractionJobList
@@ -43,18 +55,24 @@ class ExtractRuns extends Component {
     //       tableData: json._embedded.extractionJobList
     //     });
     //   });
+    // this.dispatch(getAllRuns(data))
+
+    // this.fetchRuns()
+    this.props.fetchData('/Audit/api/v1.0/Jobs');
 
   }
   onRowSelected(index) {
     console.log("test")
     var sId = this.props.visibleRuns[index].id;
-    this.props.dispatch(push('/job/' + sId))
+    this.props.toDetail(sId);
+  // this.props.dispatch(push('/job/' + sId))
   }
 
   render() {
     return (
       <MuiThemeProvider>
         <Table
+               style={ style }
                height={ this.state.height }
                fixedHeader={ this.state.fixedHeader }
                fixedFooter={ this.state.fixedFooter }
@@ -89,6 +107,9 @@ class ExtractRuns extends Component {
               <TableHeaderColumn tooltip="Run Percentage">
                 Run Percentage
               </TableHeaderColumn>
+              <TableHeaderColumn tooltip="Created At">
+                Created At
+              </TableHeaderColumn>
               <TableHeaderColumn tooltip="File Link">
                 File Link
               </TableHeaderColumn>
@@ -110,13 +131,16 @@ class ExtractRuns extends Component {
                     { row.id }
                   </TableRowColumn>
                   <TableRowColumn>
-                    { row.viewName }
+                    { row.report.dataProvider.name }
                   </TableRowColumn>
                   <TableRowColumn>
                     { row.status }
                   </TableRowColumn>
                   <TableRowColumn>
                     { row.percentage }
+                  </TableRowColumn>
+                  <TableRowColumn>
+                    { row.createdAt }
                   </TableRowColumn>
                   <TableRowColumn>
                     <a href={ 'http://localhost:8099/Audit/' + row.downloadLink }>
@@ -134,18 +158,35 @@ class ExtractRuns extends Component {
 }
 function selectVisibleRuns(runs, filter) {
   switch (filter) {
-    case VisibilityFilters.SHOW_ALL:
-      return runs.runs
+    case VisibilityFilters.SHOW_ALL: {
+      if ("undefined" == typeof (runs.runs)) {
+        return []
+      } else {
+        return runs.runs
+      }
+    }
     case VisibilityFilters.SHOW_COMPLETED:
       return runs.runs.filter(runs => runs.status == filter)
     case VisibilityFilters.SHOW_STARTED:
       return runs.runs.filter(runs => runs.status == filter)
   }
 }
+ExtractRuns.propTypes = {
+  fetchData: PropTypes.func.isRequired,
+  visibleRuns: PropTypes.array.isRequired
 
-function select(state) {
+};
+const mapStateToProps = (state) => {
   return {
     visibleRuns: selectVisibleRuns(state.runs, state.statusFilter)
   }
 }
-export default connect(select)(ExtractRuns);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchData: (url) => dispatch(fetchRunsTest(url)),
+    toDetail: (sId) => dispatch(push('/job/' + sId))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExtractRuns);

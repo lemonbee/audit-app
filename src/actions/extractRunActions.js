@@ -4,6 +4,34 @@ export function getAllRuns(payload) {
     payload
   }
 }
+export function fetchRunsTest(url) {
+  return (dispatch) => {
+
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+
+        return response;
+      })
+      .then((response) => response.json())
+      .then((runs) => dispatch(getAllRuns(runs)))
+
+  }
+}
+
+export function fetchPostsSuccess(payload) {
+  return {
+    type: "FETCH_ALL_SUCCESS",
+    payload
+  }
+}
+export function fetchPostsError() {
+  return {
+    type: "FETCH_ERROR"
+  }
+}
 export function setVisibilityFilter(filter) {
   return {
     type: SET_VISIBILITY_FILTER,

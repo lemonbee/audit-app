@@ -2,70 +2,325 @@
   "_embedded": {
     "extractionJobList": [
       {
-        "id": 7,
-        "createdAt": 1493707831626,
-        "percentage": 0,
-        "status": "STARTED",
-        "lastUpdatedAt": 1493707831626,
-        "_links": {
-          "self": {
-            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/7"
-          }
-        }
-      },
-      {
-        "id": 8,
-        "createdAt": 1493707871231,
+        "id": 811,
+        "createdAt": 1494923891868,
         "percentage": 1,
         "status": "COMPLETED",
-        "lastUpdatedAt": 1493707871231,
+        "report": {
+          "id": 709,
+          "createdAt": 1494923572860,
+          "dataProvider": {
+            "id": 5,
+            "createdAt": 1493706702996,
+            "name": "Multi-Referred Documents",
+            "serviceName": "FAC_AUDIT_JOURNAL_SRV",
+            "entitySetName": "MultipleRefDocSet",
+            "lastUpdatedAt": 1493706702996
+          },
+          "name": "MultipleRefDoc",
+          "lastUpdatedAt": 1494923572860
+        },
+        "lastUpdatedAt": 1494923895131,
         "_links": {
           "self": {
-            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/8"
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/811"
+          },
+          "File": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/811/File"
+          },
+          "Reports": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Reports/709"
           }
         }
       },
       {
-        "id": 9,
-        "createdAt": 1493708069189,
-        "percentage": 0,
-        "status": "STARTED",
-        "lastUpdatedAt": 1493708069189,
+        "id": 810,
+        "createdAt": 1494923881916,
+        "percentage": 1,
+        "status": "COMPLETED",
+        "report": {
+          "id": 709,
+          "createdAt": 1494923572860,
+          "dataProvider": {
+            "id": 5,
+            "createdAt": 1493706702996,
+            "name": "Multi-Referred Documents",
+            "serviceName": "FAC_AUDIT_JOURNAL_SRV",
+            "entitySetName": "MultipleRefDocSet",
+            "lastUpdatedAt": 1493706702996
+          },
+          "name": "MultipleRefDoc",
+          "lastUpdatedAt": 1494923572860
+        },
+        "lastUpdatedAt": 1494923898972,
         "_links": {
           "self": {
-            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/9"
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/810"
+          },
+          "File": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/810/File"
+          },
+          "Reports": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Reports/709"
           }
         }
       },
       {
-        "id": 10,
-        "createdAt": 1493708135487,
-        "percentage": 0,
-        "status": "STARTED",
-        "lastUpdatedAt": 1493708135487,
+        "id": 710,
+        "createdAt": 1494923601739,
+        "percentage": 1,
+        "status": "COMPLETEDWITHERROR",
+        "report": {
+          "id": 709,
+          "createdAt": 1494923572860,
+          "dataProvider": {
+            "id": 5,
+            "createdAt": 1493706702996,
+            "name": "Multi-Referred Documents",
+            "serviceName": "FAC_AUDIT_JOURNAL_SRV",
+            "entitySetName": "MultipleRefDocSet",
+            "lastUpdatedAt": 1493706702996
+          },
+          "name": "MultipleRefDoc",
+          "lastUpdatedAt": 1494923572860
+        },
+        "lastUpdatedAt": 1494923628275,
         "_links": {
           "self": {
-            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/10"
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/710"
+          },
+          "File": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/710/File"
+          },
+          "Reports": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Reports/709"
           }
         }
       },
       {
-        "id": 11,
-        "createdAt": 1493708277865,
-        "percentage": 0,
-        "status": "STARTED",
-        "lastUpdatedAt": 1493708277865,
+        "id": 610,
+        "createdAt": 1494922180735,
+        "percentage": 1,
+        "status": "COMPLETEDWITHERROR",
+        "report": {
+          "id": 609,
+          "createdAt": 1494922171374,
+          "dataProvider": {
+            "id": 5,
+            "createdAt": 1493706702996,
+            "name": "Multi-Referred Documents",
+            "serviceName": "FAC_AUDIT_JOURNAL_SRV",
+            "entitySetName": "MultipleRefDocSet",
+            "lastUpdatedAt": 1493706702996
+          },
+          "name": "MultipleRefDoc",
+          "lastUpdatedAt": 1494922171374
+        },
+        "lastUpdatedAt": 1494922182995,
         "_links": {
           "self": {
-            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/11"
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/610"
+          },
+          "File": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/610/File"
+          },
+          "Reports": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Reports/609"
+          }
+        }
+      },
+      {
+        "id": 510,
+        "createdAt": 1494921951848,
+        "percentage": 1,
+        "status": "COMPLETEDWITHERROR",
+        "report": {
+          "id": 509,
+          "createdAt": 1494921889297,
+          "dataProvider": {
+            "id": 5,
+            "createdAt": 1493706702996,
+            "name": "Multi-Referred Documents",
+            "serviceName": "FAC_AUDIT_JOURNAL_SRV",
+            "entitySetName": "MultipleRefDocSet",
+            "lastUpdatedAt": 1493706702996
+          },
+          "name": "MultipleRefDoc",
+          "lastUpdatedAt": 1494921889297
+        },
+        "lastUpdatedAt": 1494921956639,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/510"
+          },
+          "File": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/510/File"
+          },
+          "Reports": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Reports/509"
+          }
+        }
+      },
+      {
+        "id": 410,
+        "createdAt": 1494842391775,
+        "percentage": 1,
+        "status": "COMPLETEDWITHERROR",
+        "report": {
+          "id": 13,
+          "createdAt": 1494841324826,
+          "dataProvider": {
+            "id": 5,
+            "createdAt": 1493706702996,
+            "name": "Multi-Referred Documents",
+            "serviceName": "FAC_AUDIT_JOURNAL_SRV",
+            "entitySetName": "MultipleRefDocSet",
+            "lastUpdatedAt": 1493706702996
+          },
+          "name": "MultipleRefDoc",
+          "lastUpdatedAt": 1494841324826
+        },
+        "lastUpdatedAt": 1494842393739,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/410"
+          },
+          "File": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/410/File"
+          },
+          "Reports": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Reports/13"
+          }
+        }
+      },
+      {
+        "id": 311,
+        "createdAt": 1494842376739,
+        "percentage": 1,
+        "status": "COMPLETEDWITHERROR",
+        "report": {
+          "id": 13,
+          "createdAt": 1494841324826,
+          "dataProvider": {
+            "id": 5,
+            "createdAt": 1493706702996,
+            "name": "Multi-Referred Documents",
+            "serviceName": "FAC_AUDIT_JOURNAL_SRV",
+            "entitySetName": "MultipleRefDocSet",
+            "lastUpdatedAt": 1493706702996
+          },
+          "name": "MultipleRefDoc",
+          "lastUpdatedAt": 1494841324826
+        },
+        "lastUpdatedAt": 1494842379260,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/311"
+          },
+          "File": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/311/File"
+          },
+          "Reports": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Reports/13"
+          }
+        }
+      },
+      {
+        "id": 212,
+        "createdAt": 1494842229921,
+        "percentage": 1,
+        "status": "COMPLETEDWITHERROR",
+        "report": {
+          "id": 13,
+          "createdAt": 1494841324826,
+          "dataProvider": {
+            "id": 5,
+            "createdAt": 1493706702996,
+            "name": "Multi-Referred Documents",
+            "serviceName": "FAC_AUDIT_JOURNAL_SRV",
+            "entitySetName": "MultipleRefDocSet",
+            "lastUpdatedAt": 1493706702996
+          },
+          "name": "MultipleRefDoc",
+          "lastUpdatedAt": 1494841324826
+        },
+        "lastUpdatedAt": 1494842234800,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/212"
+          },
+          "File": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/212/File"
+          },
+          "Reports": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Reports/13"
+          }
+        }
+      },
+      {
+        "id": 113,
+        "createdAt": 1494842056309,
+        "percentage": 1,
+        "status": "COMPLETEDWITHERROR",
+        "report": {
+          "id": 13,
+          "createdAt": 1494841324826,
+          "dataProvider": {
+            "id": 5,
+            "createdAt": 1493706702996,
+            "name": "Multi-Referred Documents",
+            "serviceName": "FAC_AUDIT_JOURNAL_SRV",
+            "entitySetName": "MultipleRefDocSet",
+            "lastUpdatedAt": 1493706702996
+          },
+          "name": "MultipleRefDoc",
+          "lastUpdatedAt": 1494841324826
+        },
+        "lastUpdatedAt": 1494842061545,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/113"
+          },
+          "File": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/113/File"
+          },
+          "Reports": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Reports/13"
+          }
+        }
+      },
+      {
+        "id": 14,
+        "createdAt": 1494841477848,
+        "percentage": 1,
+        "status": "COMPLETEDWITHERROR",
+        "report": {
+          "id": 13,
+          "createdAt": 1494841324826,
+          "dataProvider": {
+            "id": 5,
+            "createdAt": 1493706702996,
+            "name": "Multi-Referred Documents",
+            "serviceName": "FAC_AUDIT_JOURNAL_SRV",
+            "entitySetName": "MultipleRefDocSet",
+            "lastUpdatedAt": 1493706702996
+          },
+          "name": "MultipleRefDoc",
+          "lastUpdatedAt": 1494841324826
+        },
+        "lastUpdatedAt": 1494841483996,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/14"
+          },
+          "File": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Jobs/14/File"
+          },
+          "Reports": {
+            "href": "http://localhost:8099/Audit/api/v1.0/Reports/13"
           }
         }
       }
     ]
-  },
-  "_links": {
-    "self": {
-      "href": "http://localhost:8099/Audit/api/v1.0/Jobs"
-    }
   }
 }
