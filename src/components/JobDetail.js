@@ -79,7 +79,7 @@ class JobDetial extends React.Component {
           <br/>
           <TextField
                      value={ this.state.reportId }
-                     floatingLabelText="Report" />
+                     floatingLabelText="Data Provider Id" />
           <br/>
           <br/>
           <h2>Query Info</h2>

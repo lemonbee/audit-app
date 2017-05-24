@@ -6,31 +6,37 @@ import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import TextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, } from 'material-ui/Table';
+import Divider from 'material-ui/Divider';
+import { connect } from "react-redux"
+import { push } from 'react-router-redux'
+import { fetchReports, createDataExtRun } from '../actions/createRunActions'
 var dataProviders = require('../data/DataProviders.json');
 /**
  * A contrived example using a transition between steps
  */
 class CreateRun extends React.Component {
   state = {
-    selectedProvider: 1,
+    selectedProvider: "",
     dataProviders: [],
     selectedCoCd: 1,
     coCds: [],
     selectedLedger: 1,
-    ledgers: []
+    ledgers: [],
+    loading: false,
+    finished: false,
+    stepIndex: 0,
+    reports: [],
+    selectedReport: ""
 
   };
   componentWillMount() {
     // fetch()
     this.state.dataProviders = dataProviders._embedded.dataProviderList;
   }
+  componentDidMount() {
+    // this._fetchReports();
+  }
   ;
-
-  state = {
-    loading: false,
-    finished: false,
-    stepIndex: 0,
-  };
 
   dummyAsync = (cb) => {
     this.setState({
@@ -61,15 +67,27 @@ class CreateRun extends React.Component {
     }
   };
   isProviderSelected(index) {
-    if ("undefined" == typeof (index)) {
+    if ("undefined" !== typeof (index) && index.length > 0) {
       this.setState({
         "selectedProvider": this.state.dataProviders[index].entitySetName
       })
+      this.props.fetchReportList(this.state.dataProviders[index].id);
+    }
+
+  }
+  isReportSelected(index) {
+    if ("undefined" !== typeof (index) && index.length > 0) {
+      this.setState({
+        "selectedReport": this.props.reports[index].id
+      })
+
     }
 
   }
 
   getStepContent(stepIndex) {
+    var that = this;
+
     switch (stepIndex) {
       case 0:
         return (
@@ -96,7 +114,7 @@ class CreateRun extends React.Component {
               { this.state.dataProviders.map((row, index) => (
                   <TableRow
                             key={ index }
-                            selected={ this.state.selectedProvider == row.entitySetName }>
+                            selected={ that.state.selectedProvider == row.entitySetName }>
                     <TableRowColumn>
                       { row.serviceName }
                     </TableRowColumn>
@@ -116,26 +134,77 @@ class CreateRun extends React.Component {
           </Table>
         );
       case 1:
+        // this._fetchReports(5);
         return (
           <div>
-            <TextField
-                       style={ { marginTop: 0 } }
-                       floatingLabelText="Ad group name" />
-            <p>
-              Ad group status is different than the statuses for campaigns, ads, and keywords, though the statuses can affect each other. Ad groups are contained within a campaign,
-              and each campaign can have one or more ad groups. Within each ad group are ads, keywords, and bids.
-            </p>
-            <p>
-              Something something whatever cool
-            </p>
+            <h4>Selected Data Provider: { this.state.selectedProvider }</h4>
+            <Table
+                   deselectOnClickaway={ false }
+                   onRowSelection={ this.isReportSelected.bind(this) }>
+              <TableHeader>
+                <TableRow>
+                  <TableHeaderColumn
+                                     colSpan="5"
+                                     tooltip="Reports to Select"
+                                     style={ { textAlign: 'center' } }>
+                    Reports to Select
+                  </TableHeaderColumn>
+                </TableRow>
+                <TableRow>
+                  <TableHeaderColumn>
+                    ID
+                  </TableHeaderColumn>
+                  <TableHeaderColumn>
+                    Name
+                  </TableHeaderColumn>
+                  <TableHeaderColumn>
+                    Query Conditions
+                  </TableHeaderColumn>
+                  <TableHeaderColumn>
+                    Selection Fields
+                  </TableHeaderColumn>
+                  <TableHeaderColumn>
+                    Ordering Fields
+                  </TableHeaderColumn>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                { this.props.reports.map((row, index) => (
+                    <TableRow
+                              key={ index }
+                              selected={ that.state.selectedReport == row.id }>
+                      <TableRowColumn>
+                        { row.id }
+                      </TableRowColumn>
+                      <TableRowColumn>
+                        { row.name }
+                      </TableRowColumn>
+                      <TableRowColumn>
+                        None
+                      </TableRowColumn>
+                      <TableRowColumn>
+                        ALL
+                      </TableRowColumn>
+                      <TableRowColumn>
+                        None
+                      </TableRowColumn>
+                    </TableRow>
+                  
+                  )) }.bind(this)
+              </TableBody>
+            </Table>
           </div>
         );
       case 2:
         return (
-          <p>
-            Try out different ad text to see what brings in the most customers, and learn how to enhance your ads using features like ad extensions. If you run into any problems
-            with your ads, find out how to tell if they're running and how to resolve approval issues.
-          </p>
+          <div>
+            <h4>Selected Data Provider: { this.state.selectedProvider }</h4>
+            <h4>Selected Report: { this.state.selectedReport }</h4>
+            <Divider/>
+            <p>
+              Do you want to create a data extract job?
+            </p>
+          </div>
         );
       default:
         return 'You\'re a long way from home sonny jim!';
@@ -150,21 +219,9 @@ class CreateRun extends React.Component {
     };
 
     if (finished) {
-      return (
-        <div style={ contentStyle }>
-          <p>
-            <a
-               href="#"
-               onClick={ (event) => {
-                           event.preventDefault();
-                           this.setState({
-                             stepIndex: 0,
-                             finished: false
-                           });
-                         } }>Click here</a> to reset the example.
-          </p>
-        </div>
-      );
+      this.props.createRun(this.state.selectedReport, 100);
+      // this.props.toDetail(this.props.newRunId);
+
     }
 
     return (
@@ -179,7 +236,7 @@ class CreateRun extends React.Component {
                       onTouchTap={ this.handlePrev }
                       style={ { marginRight: 12 } } />
           <RaisedButton
-                        label={ stepIndex === 2 ? 'Finish' : 'Next' }
+                        label={ stepIndex === 2 ? 'Create Extraction Run' : 'Next' }
                         primary={ true }
                         onTouchTap={ this.handleNext } />
         </div>
@@ -221,4 +278,28 @@ class CreateRun extends React.Component {
   }
 }
 
-export default CreateRun;
+function selectReports(reports) {
+
+  if ("undefined" == typeof (reports.reports)) {
+    return []
+  } else {
+    return reports.reports
+
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    statusFilter: state.statusFilter,
+    reports: selectReports(state.reports),
+    newRunId: state.reports.newRunId
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchReportList: (sDataSource) => dispatch(fetchReports(sDataSource)),
+    toDetail: (sId) => dispatch(push('/job/' + sId)),
+    createRun: (sReport, iNum) => dispatch(createDataExtRun(sReport, iNum))
+  }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CreateRun);

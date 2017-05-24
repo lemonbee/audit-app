@@ -24,6 +24,23 @@ export function extractRunReducer(state = {}, action) {
   }
 
 }
+export function reportsReducer(state = {}, action) {
+  switch (action.type) {
+    case 'GET_ALL_REPORTS':
+      if ("undefined" !== typeof (action.payload._embedded)) {
+        return Object.assign({}, state, {
+          "reports": action.payload._embedded.reportList
+        })
+      }
+      else return {};
+    case 'SET_NEW_RUN_ID':
+      return Object.assign({}, state, {
+        "newRunId": action.sId
+      })
+    default:
+      return state
+  }
+}
 export function packagesReducer(state = [], action) {
   switch (action.type) {
     case "GET_PACKAGES":
@@ -66,7 +83,8 @@ const reducers = combineReducers({
   runs: extractRunReducer,
   packageSelected: packageSelectedReducer,
   statusFilter: visibilityFilter,
-  routing: routerReducer
+  routing: routerReducer,
+  reports: reportsReducer
 })
 
 export default reducers;

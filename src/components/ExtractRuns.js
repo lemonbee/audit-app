@@ -143,9 +143,7 @@ class ExtractRuns extends Component {
                     { row.createdAt }
                   </TableRowColumn>
                   <TableRowColumn>
-                    <a href={ 'http://localhost:8099/Audit/' + row.downloadLink }>
-                      { row.downloadLink }
-                    </a>
+                    <a href={ "http://localhost:8099/Audit/api/v1.0/Jobs/" + row.id + "/File" }>Download Link</a>
                   </TableRowColumn>
                 </TableRow>
               )) }
@@ -168,6 +166,8 @@ function selectVisibleRuns(runs, filter) {
     case VisibilityFilters.SHOW_COMPLETED:
       return runs.runs.filter(runs => runs.status == filter)
     case VisibilityFilters.SHOW_STARTED:
+      return runs.runs.filter(runs => runs.status == filter)
+    case VisibilityFilters.SHOW_ERROR:
       return runs.runs.filter(runs => runs.status == filter)
   }
 }

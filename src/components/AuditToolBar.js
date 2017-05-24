@@ -53,10 +53,10 @@ class AuditToolBar extends React.Component {
                         value={ "STARTED" }
                         primaryText="Started Runs" />
               <MenuItem
-                        value={ 3 }
+                        value={ "ALL" }
                         primaryText="All Extraction Runs" />
               <MenuItem
-                        value={ 4 }
+                        value={ "COMLETEDWITHERROR" }
                         primaryText="Error Runs" />
             </IconMenu>
           </ToolbarGroup>
