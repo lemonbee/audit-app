@@ -2,7 +2,8 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Divider from 'material-ui/Divider';
 import TextField from 'material-ui/TextField';
-
+import CircularProgress from 'material-ui/CircularProgress';
+import LinearProgress from 'material-ui/LinearProgress';
 const style = {
   height: "300",
   width: "60%",
@@ -23,7 +24,8 @@ class JobDetial extends React.Component {
       reportId: "",
       createdAt: "",
       name: "",
-      "serviceName": ""
+      "serviceName": "",
+      completed: 100,
 
     }
   }
@@ -39,12 +41,12 @@ class JobDetial extends React.Component {
       .then((response) => response.json())
       .then((job) => {
         this.setState({
-          "status": job.status,
-          "percentage": job.percentage,
+          status: job.status,
+          percentage: job.percentage,
           reportId: job.report.dataProvider.id,
           createdAt: job.report.dataProvider.createdAt,
           name: job.report.dataProvider.name,
-          "serviceName": job.report.dataProvider.serviceName
+          serviceName: job.report.dataProvider.serviceName
 
         })
       })
@@ -73,16 +75,19 @@ class JobDetial extends React.Component {
           <TextField
                      value={ this.state.status }
                      floatingLabelText="Status" />
-          <TextField
-                     value={ this.state.percentage }
-                     floatingLabelText="Percentage" />
           <br/>
           <TextField
                      value={ this.state.reportId }
                      floatingLabelText="Data Provider Id" />
           <br/>
+          <h5>Finish Percentage { this.state.percentage * 100 }%</h5>
+          <CircularProgress
+                            mode="determinate"
+                            value={ this.state.percentage * 100 }
+                            size={ 80 }
+                            thickness={ 7 } />
           <br/>
-          <h2>Query Info</h2>
+          <h2>Query Info.</h2>
           <Divider/>
           <TextField
                      value={ this.state.serviceName }
